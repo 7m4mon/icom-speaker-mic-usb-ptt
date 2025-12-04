@@ -23,8 +23,8 @@
   Button Mapping:
     - PTT (A1 analog input)
     - UP/DOWN (A2 analog input)
-        * GND short       → Button 2 (DOWN)
-        * 470Ω pull-down  → Button 3 (UP)
+        * GND short       → Button 2 (UP)
+        * 470Ω pull-down  → Button 3 (DOWN)
         * Open circuit    → No button
 
   Library:
@@ -45,7 +45,7 @@
 #include <Joystick.h>
 
 // ボタン4個（0〜3）だけ使う設定。
-// 実際に使うのは 0:PTT / 2:DOWN / 3:UP
+// 実際に使うのは 0:PTT / 2:UP / 3:DOWN
 Joystick_ Joystick(
   JOYSTICK_DEFAULT_REPORT_ID,
   JOYSTICK_TYPE_GAMEPAD,
@@ -67,8 +67,8 @@ const int PIN_UPDN_INPUT   = A2;  // A2 は UP / DOWN
 const int TH_PTT = 880;
 
 // --- A2用しきい値（元コードそのまま） ---
-// 0V〜80未満    → ボタン2 (DOWN)
-// 80〜260未満   → ボタン3 (UP)
+// 0V〜80未満    → ボタン2 (UP)
+// 80〜260未満   → ボタン3 (DOWN)
 // 260以上       → OFF
 const int TH_GND  = 80;
 const int TH_470  = 260;
@@ -89,8 +89,8 @@ void loop() {
   // --- A2 の電圧で UP / DOWN を判定 ---
   int val = analogRead(PIN_UPDN_INPUT);  // 0〜1023
 
-  bool btn2 = false;  // DOWN
-  bool btn3 = false;  // UP
+  bool btn2 = false;  // UP
+  bool btn3 = false;  // DOWN
 
   if (val < TH_GND) {
     btn2 = true;
@@ -99,8 +99,8 @@ void loop() {
   }
   // それ以外は何も押されていない
 
-  Joystick.setButton(2, btn2);  // DOWN
-  Joystick.setButton(3, btn3);  // UP
+  Joystick.setButton(2, btn2);  // UP
+  Joystick.setButton(3, btn3);  // DOWN
 
 
   delay(10);  // チャタリング軽減・USBトラフィック控えめ

@@ -31,8 +31,9 @@ gamepad with four buttons.
 ## Block Graph
 - Desktop Transceiver Microphone
 <img width="1702" height="575" alt="Image" src="https://github.com/user-attachments/assets/3c18ff28-929f-476a-9add-29413e4941b1" />  
+
 - Handheld Transceiver Microphone
-<img width="1882" height="685" alt="Image" src="https://github.com/user-attachments/assets/0a957bbd-5a2c-402e-b7fb-b6892a636f6d" />
+<img width="1882" height="685" alt="Image" src="https://github.com/user-attachments/assets/0a957bbd-5a2c-402e-b7fb-b6892a636f6d" />  
 
 ## Library
 Joystick library by MHeironimus  

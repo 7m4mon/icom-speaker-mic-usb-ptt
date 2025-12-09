@@ -22,11 +22,17 @@ gamepad with four buttons.
 - **Windows Mumble** allows assigning DOWN/UP to any available function.
 
 ## Analog Inputs
-- **PTT** — A1 analog input  
-- **DOWN/UP** — A2 analog input  
+- **PTT** — A1 analog input (external 2.2kΩ Pull-up for Desktop Microphone)  
+- **DOWN/UP** — A2 analog input (external 2.2kΩ Pull-up)  
   - GND short → Button 2 (UP)  
-  - 470Ω pull-UP → Button 3 (DOWN)  
+  - 470Ω pull-Down → Button 3 (DOWN)  
   - Open circuit → No button  
+
+## Block Graph
+- Desktop Transceiver Microphone
+<img width="1702" height="575" alt="Image" src="https://github.com/user-attachments/assets/3c18ff28-929f-476a-9add-29413e4941b1" />  
+- Handheld Transceiver Microphone
+<img width="1882" height="685" alt="Image" src="https://github.com/user-attachments/assets/0a957bbd-5a2c-402e-b7fb-b6892a636f6d" />
 
 ## Library
 Joystick library by MHeironimus  

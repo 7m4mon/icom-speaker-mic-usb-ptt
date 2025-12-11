@@ -5,6 +5,8 @@
 ![Image](https://github.com/user-attachments/assets/0e1ba12b-6050-48ae-a206-d6e0644e93b4)  
 ![Image](https://github.com/user-attachments/assets/c03c2af9-a047-461d-a6d3-7771e206e4f2)  
 
+[![Video Title](https://img.youtube.com/vi/zsZLuWGPqZs/0.jpg)](https://www.youtube.com/watch?v=zsZLuWGPqZs)
+
 **MCU:** ATmega32u4 (Arduino Micro / Pro Micro)
 
 ## Purpose

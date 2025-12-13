@@ -65,6 +65,8 @@ const int PIN_UPDN_INPUT   = A2;  // A2 は UP / DOWN
 // 測定値：OFF 5.0V、ON 3.7V (750) → 中間 ≒ 4.3V
 // 5V/10bit ADC → 約  に相当
 const int TH_PTT = 880;
+// --- PTT delay (to avoid pop noise caused by DC shift on mic line) ---
+const uint16_t PTT_ON_DELAY_MS = 300; 
 
 // --- A2用しきい値（元コードそのまま） ---
 // 0V〜80未満    → ボタン2 (UP)
@@ -81,10 +83,34 @@ void setup() {
 }
 
 void loop() {
-  // --- A1 の電圧で PTT を判定 ---
+  // --- A1: PTT with ON-delay to avoid pop noise ---
+  static bool pttLatched = false;          // what we actually report to HID
+  static bool pttPending = false;          // waiting for delay to expire
+  static uint32_t pttT0  = 0;              // time when press was detected
+
   int valPTT = analogRead(PIN_PTT_ANALOG);
-  bool btn0 = (valPTT < TH_PTT);  // 低くなったら押された
-  Joystick.setButton(0, btn0);
+  bool pttRawPressed = (valPTT < TH_PTT);  // raw detection (pressed when ADC goes low)
+
+  const uint32_t now = millis();
+
+  if (pttRawPressed) {
+    if (!pttLatched && !pttPending) {
+      // First time we see press -> start delay timer
+      pttPending = true;
+      pttT0 = now;
+    }
+    // If pending and delay elapsed -> latch ON
+    if (pttPending && (now - pttT0 >= PTT_ON_DELAY_MS)) {
+      pttLatched = true;
+      pttPending = false;
+    }
+  } else {
+    // Released -> immediately stop transmitting
+    pttLatched = false;
+    pttPending = false;
+  }
+
+  Joystick.setButton(0, pttLatched);
 
   // --- A2 の電圧で UP / DOWN を判定 ---
   int val = analogRead(PIN_UPDN_INPUT);  // 0〜1023

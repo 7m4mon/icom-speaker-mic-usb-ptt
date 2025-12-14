@@ -1,8 +1,7 @@
 # Icom Microphone → USB HID Gamepad Adapter
 
-![Image](https://github.com/user-attachments/assets/9e31db43-6ea2-4e8c-94a8-cc75d8e75338)  
+![Image](https://github.com/user-attachments/assets/56340d1b-bc4d-4e01-a576-0b0d72583533)  
 ![Image](https://github.com/user-attachments/assets/3f880e6f-af01-4607-8acf-a3b267de6d9f)  
-![Image](https://github.com/user-attachments/assets/0e1ba12b-6050-48ae-a206-d6e0644e93b4)  
 ![Image](https://github.com/user-attachments/assets/c03c2af9-a047-461d-a6d3-7771e206e4f2)  
 
 [![Video Title](https://img.youtube.com/vi/zsZLuWGPqZs/0.jpg)](https://www.youtube.com/watch?v=zsZLuWGPqZs)
